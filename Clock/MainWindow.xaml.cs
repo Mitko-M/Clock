@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -23,14 +24,20 @@ namespace Clock
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private DispatcherTimer timer;
+
         public MainWindow()
         {
             this.InitializeComponent();
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += DispatcherTimerTick;
+            timer.Start();
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        private void DispatcherTimerTick(object sender, object e)
         {
-            myButton.Content = "Clicked";
+            digitalClockOutput.Text = $"{DateTime.Now.ToString("HH:mm:ss")}"; 
         }
     }
 }
