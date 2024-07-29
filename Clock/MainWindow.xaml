@@ -18,7 +18,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="digitalClockOutput" FontFamily="Arial" FontSize="72"/>
+            <TextBlock x:Name="digitalClockOutput" 
+                       FontFamily="Arial" 
+                       FontSize="150"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
         </Grid>
     </Grid>
 </Window>
